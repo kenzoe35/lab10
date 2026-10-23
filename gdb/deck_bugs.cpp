@@ -40,6 +40,7 @@ void deal_a_hand() {
   Card *hand = new Card[52];
   hand[0] = Card{9, Suit::clubs};
   std::cout << "Top card: " << hand[0].to_string() << "\n";
+  delete [] hand;
 }
 
 // Bug 2

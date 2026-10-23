@@ -22,6 +22,17 @@ Record:
 - How you stepped through the program (`break main`, `run`, `next`, `step`): list the commands and what each showed:
 - The fix, and how you checked it:
 
+Notes:
+
+Output:
+You are in the hall. A long, cold hall.
+You are in the kitchen. Pots hang from hooks.
+You are in the pantry. Shelves of jars.
+Segmentation fault (core dumped)
+
+
+
+
 ### Part B: memory with `deck_bugs.cpp`
 
 Build with AddressSanitizer and run each bug on its own (`./deck_bugs 1`, `2`, `3`).

@@ -9,10 +9,16 @@
 
 Deck::Deck() : m_cards{nullptr}, m_size{0}, m_next{0} {
   // TODO: allocate deck_size cards with new[] and fill in one of each.
+  int index{0};
+  for(int i{1}; i < 13; ++i) {
+    for(int j{0}; j < 4; ++j) {
+      m_cards[index++] = Card(i, static_cast<Suit>(j));
+    }
+  }
 }
-
 Deck::~Deck() {
   // TODO: release what the constructor allocated.
+  delete[] m_cards;
 }
 
 Deck::Deck(const Deck &other) : m_cards{nullptr}, m_size{0}, m_next{0} {
