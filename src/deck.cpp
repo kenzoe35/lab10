@@ -7,10 +7,10 @@
  * Do not change the other functions in this file.
  ******************************************************************************/
 
-Deck::Deck() : m_cards{nullptr}, m_size{0}, m_next{0} {
+Deck::Deck() : m_cards{new Card[deck_size]}, m_size{deck_size}, m_next{0} {
   // TODO: allocate deck_size cards with new[] and fill in one of each.
   int index{0};
-  for(int i{1}; i < 13; ++i) {
+  for(int i{1}; i <= 13; ++i) {
     for(int j{0}; j < 4; ++j) {
       m_cards[index++] = Card(i, static_cast<Suit>(j));
     }
@@ -22,16 +22,15 @@ Deck::~Deck() {
 }
 
 Deck::Deck(const Deck &other) : m_cards{nullptr}, m_size{0}, m_next{0} {
-  // TODO: give this deck its own array holding the same cards as other.
+  //TODO: give this deck its own array holding the same cards as other
   (void)other;
 }
 
 Deck &Deck::operator=(const Deck &other) {
-  // TODO: free the old cards, copy other's cards, and handle d = d.
+  // TODO: free the old cards, copy other's cards, and handle d = d
   (void)other;
   return *this;
 }
-
 /*******************************************************************************
  * Provided: Do Not Change
  ******************************************************************************/
