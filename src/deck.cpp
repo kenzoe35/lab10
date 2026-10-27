@@ -7,8 +7,9 @@
  * Do not change the other functions in this file.
  ******************************************************************************/
 
-Deck::Deck() : m_cards{new Card[deck_size]}, m_size{deck_size}, m_next{0} {
+Deck::Deck() : m_cards{nullptr}, m_size{deck_size}, m_next{0} {
   // TODO: allocate deck_size cards with new[] and fill in one of each.
+  m_cards = new Card[deck_size];
   int index{0};
   for(int i{1}; i <= 13; ++i) {
     for(int j{0}; j < 4; ++j) {
@@ -21,14 +22,26 @@ Deck::~Deck() {
   delete[] m_cards;
 }
 
-Deck::Deck(const Deck &other) : m_cards{nullptr}, m_size{0}, m_next{0} {
+Deck::Deck(const Deck &other) : m_cards{nullptr}, m_size{other.m_size}, m_next{other.m_next} {
   //TODO: give this deck its own array holding the same cards as other
-  (void)other;
+  
+  m_cards = new Card[m_size];
+  for (int i{0}; i <= m_size; ++i) {
+    m_cards[i] = other.m_cards[i];
+  }
 }
 
 Deck &Deck::operator=(const Deck &other) {
   // TODO: free the old cards, copy other's cards, and handle d = d
-  (void)other;
+  if (&other != this) {
+    m_size = other.m_size;
+    m_next = other.m_next;
+    delete[] m_cards;
+    m_cards = new Card[m_size];
+    for (int i{0}; i <= other.m_size; ++i) {
+        m_cards[i] = other.m_cards[i];
+    }
+  }
   return *this;
 }
 /*******************************************************************************

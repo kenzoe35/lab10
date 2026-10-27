@@ -41,6 +41,7 @@ Choice parse_choice(const std::string &text) {
 } // namespace
 
 int main() {
+
   std::string line;
   while (true) {
     print_menu();
