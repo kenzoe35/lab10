@@ -24,7 +24,6 @@ Deck::~Deck() {
 
 Deck::Deck(const Deck &other) : m_cards{nullptr}, m_size{other.m_size}, m_next{other.m_next} {
   //TODO: give this deck its own array holding the same cards as other
-  
   m_cards = new Card[m_size];
   for (int i{0}; i <= m_size; ++i) {
     m_cards[i] = other.m_cards[i];
@@ -38,7 +37,7 @@ Deck &Deck::operator=(const Deck &other) {
     m_next = other.m_next;
     delete[] m_cards;
     m_cards = new Card[m_size];
-    for (int i{0}; i <= other.m_size; ++i) {
+    for (int i{0}; i < other.m_size; ++i) {
         m_cards[i] = other.m_cards[i];
     }
   }
@@ -67,6 +66,6 @@ Card Deck::deal() {
   return top;
 }
 
-bool Deck::empty() { return m_next >= m_size; }
+bool Deck::empty() const { return m_next >= m_size; }
 
-int Deck::remaining() { return m_size - m_next; }
+int Deck::remaining() const { return m_size - m_next; }
