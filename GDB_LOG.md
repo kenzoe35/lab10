@@ -64,3 +64,4 @@ For each bug, write one or two sentences: what kind of error AddressSanitizer re
 Confirm one bug in GDB. Use at least two of `watch`, `finish`, and `x`. Paste the session and explain what each command showed:
 
 Fixes for all three bugs (describe each change):
+- Bug 1's fix was to delete the allocated memory hand, by using the delete function
