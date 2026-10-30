@@ -50,6 +50,10 @@ int main() {
                             Direction::west};
   for (Direction d : walk) {
     current = move(current, d);
+    if (current == nullptr) { 
+        std::cout << "You cannot go that way\n";
+    break;
+    }
     describe(current);
   }
 

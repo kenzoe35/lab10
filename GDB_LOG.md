@@ -24,6 +24,22 @@ Record:
 
 Notes:
 
+Part A:
+#1  0x00005555555563de in describe (room=0x0) at /home/ubuntu/cosc1437/lab10/gdb/buggy_rooms.cpp:36
+#2  0x00005555555566b6 in main () at /home/ubuntu/cosc1437/lab10/gdb/buggy_rooms.cpp:53
+The function and line number that crashed is line 36 in the describe function
+room was evaluated to 0x0 as shown in the error message
+
+- 'break main': start from inside of main
+- 'run': started and ran the program in main
+- 'next': goes through each line and running, occassionally printing out the statements
+- 'step': using step I investigated describe and on the final step, room was 0x0
+
+describe (room=0x55555556d2d0) at /home/ubuntu/cosc1437/lab10/gdb/buggy_rooms.cpp:36
+
+- for the fix, I added a check to see if current location it is trying to describe is a nullpointer
+- it then returns a statement saying you cannot go that way if that is the case.
+
 Output:
 You are in the hall. A long, cold hall.
 You are in the kitchen. Pots hang from hooks.
