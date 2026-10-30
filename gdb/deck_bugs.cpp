@@ -24,6 +24,13 @@ public:
     }
   }
 
+  // Copy constructor for bug 2 deep copy due to rule of 3
+  RawDeck(const RawDeck &other) : cards_{new Card[other.size_]}, size_{other.size_} {
+    for (int i = 0; i < size_; ++i) {
+      cards_[i] = other.cards_[i];
+    }
+  }
+
   ~RawDeck() { delete[] cards_; }
 
   const Card &at(int index) const { return cards_[index]; }

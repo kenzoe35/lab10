@@ -58,10 +58,22 @@ For each bug, write one or two sentences: what kind of error AddressSanitizer re
 | Bug | Report kind | Allocated at | Freed at | Cause in one sentence |
 | --- | --- | --- | --- | --- |
 | 1 |Memory Leak | new Card[52] | Memory was never freed | The dynamic memory was never freed|
-| 2 | | | | |
+| 2 |Double free error | new Card[52]|destructor |shallow copy makes the delete remove both rawdeck objects |
 | 3 | | | | |
 
 Confirm one bug in GDB. Use at least two of `watch`, `finish`, and `x`. Paste the session and explain what each command showed:
+- I ran GDB for Bug 2
+- I set a breakpoint for the deck copy function and watched for back up
+- it returned this:
+Hardware watchpoint 2: backup
 
+Old value = {cards_ = 0x55555556f460, size_ = -7728}
+New value = {cards_ = 0x55555556f460, size_ = 52}
+RawDeck::RawDeck (this=0x7fffffffe140, other=...) at
+
+- this showcases a shallow copy, which mean't the new deck points to the address of the original
+- instead of making a new one, so I will need make a copy constructor due to the rule of 3
+- I then ran finish which let the function run till the end
 Fixes for all three bugs (describe each change):
 - Bug 1's fix was to delete the allocated memory hand, by using the delete function
+- Bug 2's fix was to make a copy constructor for RawDeck
