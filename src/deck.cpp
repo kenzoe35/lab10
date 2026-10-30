@@ -25,7 +25,7 @@ Deck::~Deck() {
 Deck::Deck(const Deck &other) : m_cards{nullptr}, m_size{other.m_size}, m_next{other.m_next} {
   //TODO: give this deck its own array holding the same cards as other
   m_cards = new Card[m_size];
-  for (int i{0}; i <= m_size; ++i) {
+  for (int i{0}; i < m_size; ++i) {
     m_cards[i] = other.m_cards[i];
   }
 }
