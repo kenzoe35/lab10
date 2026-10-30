@@ -59,7 +59,7 @@ For each bug, write one or two sentences: what kind of error AddressSanitizer re
 | --- | --- | --- | --- | --- |
 | 1 |Memory Leak | new Card[52] | Memory was never freed | The dynamic memory was never freed|
 | 2 |Shallow copy | new Card[52]|destructor |shallow copy makes the delete remove both rawdeck objects |
-| 3 | | | | |
+| 3 |Double free | new |two delete statements |The same pointer is deleted twice without being changed  |
 
 Confirm one bug in GDB. Use at least two of `watch`, `finish`, and `x`. Paste the session and explain what each command showed:
 - I ran GDB for Bug 2
@@ -77,3 +77,4 @@ RawDeck::RawDeck (this=0x7fffffffe140, other=...) at
 Fixes for all three bugs (describe each change):
 - Bug 1's fix was to delete the allocated memory hand, by using the delete function
 - Bug 2's fix was to make a copy constructor for RawDeck
+- Bug 3's fix was to delete one of the extra delete statements

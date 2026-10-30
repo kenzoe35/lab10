@@ -42,7 +42,7 @@ private:
   int size_;
 };
 
-// Bug 1
+// Bug 1 (Memory leak due to memory not being freed)
 void deal_a_hand() {
   Card *hand = new Card[52];
   hand[0] = Card{9, Suit::clubs};
@@ -50,21 +50,20 @@ void deal_a_hand() {
   delete [] hand;
 }
 
-// Bug 2
+// Bug 2 (Shallow copy resulted in multiple being deleted, thus needing a copy constructor for deep copy)
 void copy_a_deck() {
   RawDeck original;
   RawDeck backup = original;
   std::cout << "Backup top card: " << backup.at(0).to_string() << "\n";
 }
 
-// Bug 3
+// Bug 3 (The same memory pointer was deleted twice, there only needs to be one)
 void clear_a_table() {
   Card *table = new Card[5];
   table[0] = Card{12, Suit::hearts};
   std::cout << "Table card: " << table[0].to_string() << "\n";
   delete[] table;
   std::cout << "Table cleared.\n";
-  delete[] table;
 }
 
 int main(int argc, char *argv[]) {
