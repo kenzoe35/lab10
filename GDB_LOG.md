@@ -57,7 +57,7 @@ For each bug, write one or two sentences: what kind of error AddressSanitizer re
 
 | Bug | Report kind | Allocated at | Freed at | Cause in one sentence |
 | --- | --- | --- | --- | --- |
-| 1 | | | | |
+| 1 |Memory Leak | new Card[52] | Memory was never freed | The dynamic memory was never freed|
 | 2 | | | | |
 | 3 | | | | |
 
