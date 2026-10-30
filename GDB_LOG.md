@@ -58,7 +58,7 @@ For each bug, write one or two sentences: what kind of error AddressSanitizer re
 | Bug | Report kind | Allocated at | Freed at | Cause in one sentence |
 | --- | --- | --- | --- | --- |
 | 1 |Memory Leak | new Card[52] | Memory was never freed | The dynamic memory was never freed|
-| 2 |Double free error | new Card[52]|destructor |shallow copy makes the delete remove both rawdeck objects |
+| 2 |Shallow copy | new Card[52]|destructor |shallow copy makes the delete remove both rawdeck objects |
 | 3 | | | | |
 
 Confirm one bug in GDB. Use at least two of `watch`, `finish`, and `x`. Paste the session and explain what each command showed:
