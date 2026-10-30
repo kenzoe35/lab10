@@ -74,6 +74,8 @@ RawDeck::RawDeck (this=0x7fffffffe140, other=...) at
 - this showcases a shallow copy, which mean't the new deck points to the address of the original
 - instead of making a new one, so I will need make a copy constructor due to the rule of 3
 - I then ran finish which let the function run till the end
+
+
 Fixes for all three bugs (describe each change):
 - Bug 1's fix was to delete the allocated memory hand, by using the delete function
 - Bug 2's fix was to make a copy constructor for RawDeck
